@@ -30,6 +30,6 @@ Using a DataBricks notebook, we were able to easily develop visualization from o
 
 ![image](https://github.com/Erink8/Project4/assets/117420486/e82b346d-b1d0-49dd-94b5-627a2cd245d7)
 
-Using Google Collab, we imported the cleaned csv file and begin to train, test, and optimize our model.
+Using Google Collab, we imported the cleaned csv file and began to train, test, and optimize our model.
 
 ## Machine Learning
