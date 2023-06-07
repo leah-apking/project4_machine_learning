@@ -12,14 +12,13 @@ Nancy Gomez
 
 Sheila Troxel
 
-# Our Project
-## Develop a machine learning model that accurately identifies stroke patients early.
+# Our Project - Predictive Risks of Stroke
 
-### Exloring Datasets
+### Exploring Datasets
 
-To begin, we explored healthcare datasets, looking for data that included other health factors in addition to whether a patient had a stroke or not, as this would be key in helping us build a model that could predict with high accuracy. We found a dataset that has been built for stroke prediction online at Kaggle.com that included 11 clinical features for predicting stroke events.
+To begin our project, we explored healthcare datasets, looking for data that included other health factors in addition to whether a patient had a stroke or not, as this would be key in helping us build a model that could predict with high accuracy. We found a dataset that has been built for stroke prediction online at Kaggle.com that included 11 clinical features for predicting stroke events.
 
-## Analyzing our Data
+## Previewing Data
 
 Using a DataBricks notebook, Python, and Spark SQL we were able to review and analyze the stroke prediction data to learn more about the patients included in the data and how the clinical features may factor into our predictions. Our DataBricks notebook can be found here and will be live for 6 months:
 
@@ -34,6 +33,8 @@ https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93e
 
 ![image](https://github.com/Erink8/Project4/assets/117420486/e82b346d-b1d0-49dd-94b5-627a2cd245d7)
 
-Using Google Collab, we imported the cleaned csv file and began to train, test, and optimize our model.
+Using Google Collab and Scikit Learn we imported the cleaned csv file and began to train, test, and optimize our model.
 
-## Machine Learning
+## Preprocessing
+
+
