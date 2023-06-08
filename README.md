@@ -51,11 +51,39 @@ In reviewing the `health-dataset-stroke-data.csv`, our data included patient dat
 ## Building the Machine Learning Model
 Now that we have a better idea of what our data looks like, we can begin to build a model. 
   
-Using Google Collab, we created notebook where we imported our dependencies, installed Spark and Java, set our environment variables and started a SparkSession. Next, we read in the healthcare-dataset-stroke-data.csv via AWS into a Spark DataFrame.
+Because our dataset contained a labeled categorical target variable, stroke (1) or no stroke (0), with 5110 data points, our model exploration included logistic regression, neural network, random forest, and K nearest neighbor machine learning models.
 
-![Google Colab Notebook](https://github.com/Erink8/Project4/blob/main/stroke_model.ipynb)
-  
- ### Preprocessing the data
- Printing the Spark Dataframe schema, we can determine data types prior to converting to a Pandas DataFrame and droping non-beneficial columns or NaN values and changing data types.
- 
+We saved our healthcare-dataset-stroke-data.csv to Amazon AWS ` https://project4-06052023.s3.us-east-2.amazonaws.com/healthcare-dataset-stroke-data.csv` which allowed us to use Spark to directly pull the data into our Google Colab notebook after importing our dependencies and packages and opening a SparkSession.
+
+### Preprocessing the Data
+Using Google Collab, we created notebook where we imported our dependencies, installed Spark and Java, set our environment variables and started a SparkSession. Next, we read in the healthcare-dataset-stroke-data.csv via AWS into a Spark DataFrame. During import Spark's `inferSchema` correctly cast all but one of our features. After converting from Spark to a Pandas DataFrame, we dropped the ID column and used `pd.to_numeric` to convert the BMI column to a float. Pandas allowed us to use `errors='coerce'` to force the “N/A” values to NaN, which had previously caused Spark to cast the column as objects. These rows containing NaN were then dropped from the dataset.
+
+Now that we had a useable dataset, we converted our categorical features to numeric with `pd.get_dummies`. Our encoded preprocessed data as split into our features and target arrays and split into a training and testing dataset. Here we also noted that our target variable was extremely unbalanced with 4700 no stroke patients and 209 stroke patients. Finally, we used `StandardScalar` to scale our feature variables before proceeding to the machine learning modelling.
+
+### Initial Machine Learning Modelling
+Our initial round of testing used our unbalanced scaled data for training, and the imbalance caused all of these models to perform poorly. The testing data contained only `4.26%` positive targets, which allowed the models to classify every data point as ‘no stroke’ and still receive a 95 percent accuracy score. Therefore, we focused on the models’ ability to classify stroke patients, but found our small number of positive cases insufficient to train an accurate model. 
+* Logistic Regression: Identified 0 stoke patients.
+* Neural Network: Identified 0 stoke patients.
+* K Nearest Neighbors: Identified 1 stoke patient.
+* Random Forest: Identified 0 stoke patients.
+When evaluating the neural network models we compared the model’s predictions to actual outcomes by having the model predict our testing data again allowing us to produce a classification report. Because of the skew of our data we could not rely on the standard model loss and accuracy scores produced by the accuracy metric as these showed 95.6 percent accuracy despite the model failing to identify a single stroke patient.
+
+### Optimization and Resampling
+To address the imbalance of our dataset we resampled our data training data with imblearn’s `RandomOverSampler`. The resampled dataset was made up of 3526 stoke outcomes and 3526 no stroke outcomes for the model to train on. This resampled, scaled data was then used to train the same machine learning models used in our initial testing.
+* Logistic Regression: Identified 42/54 stoke patients. Balanced accuracy: 0.755
+* Neural Network: Identified 0 stoke patients.
+* K Nearest Neighbors: Identified 4 stoke patients.
+* Random Forest: Identified 0 stoke patients.
+After resampling our data the network model and random forest still failed to identify a single stroke patient in our testing data, overall these models did worse than previously because they both failed to identify stroke patients and misidentified non stroke patients as stroke patients. The K Nearest Neighbors improved slightly, but not enough to continue testing. While the logistic regression model improved dramatically, identifying 77.8 percent of our stroke patients.
+
+Finally, to make sure we had thoroughly tested the neural network model we ran a keras tuner to search for different combinations of layers, neuron values, and activation functions with our resampled data. We gave the model the option of the relu, tanh, and sigmoid activation functions initially using one to six layers with one to 20 neurons each in steps of five or a maximum of 20 epochs. When that produced similar results to our previous neural networks we tried increasing the number of layers and neurons, and then decreasing the parameters. Each run of the keras tuner resulted in a best model with different activation function, a loss of over 0.50 and an accuracy of 0.96. The classification report showed that none of these neural network models identified more than six of our stroke patients, much less than our logistic regression model.
+
+### Final Stroke Model
+Our final model for identifying stroke patients in our dataset which contained features of age, gender, hypertension, heart disease, marriage, employer type, residence (urban/rural), average glucose level, body mass index, and smoking status was a logistic regression model. The data used for this model was imported from AWS using Spark, then cleaned in Pandas including converting categorial data to numeric. The data was divided into features and targets and split into training a testing sets before being resampled using RandomOverSampler which created a new set of training data containing an equal number of each target variable and then scaled using StandardScaler.
+
+This resampled, scaled training data was then used to train a logistic regression model. The model was then used to predict the outcomes of our testing dataset which contained 54 stroke patients and 1174 non stroke patients. The model successfully identified 43 stroke patients, `79.6%`, with a balanced accuracy score of `0.783`. The model was saved to `stroke_model_LR.h5` using joblib.
+
+### Discussion
+Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. We have come to understand that not all health conditions can be clearly connected to certain features. While type 2 diabetes or heart disease have very clear warning signs and testing, the risk factors for stroke can be harder to parse and more variable. However, given a larger more targeted dataset, such as older adults, with additional features such as family history, LDL cholesterol levels, presence of diabetes, or race and ethnicity it is likely that modelling can help identify patients at a greater risk for stroke.
+
  
