@@ -84,6 +84,7 @@ Our final model for identifying stroke patients in our dataset which contained f
 This resampled, scaled training data was then used to train a logistic regression model. The model was then used to predict the outcomes of our testing dataset which contained 54 stroke patients and 1174 non stroke patients. The model successfully identified 43 stroke patients, `79.6%`, with a balanced accuracy score of `0.783`. The model was saved to `stroke_model_LR.h5` using joblib.
 
 ### Summary
-Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. While type 2 diabetes or heart disease have very clear warning signs, the risk factors for stroke can be harder to parse and more variable. 
+Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. Given a larger more targeted dataset, such as older adults, with additional features such as family history, LDL cholesterol levels, presence of diabetes, or race and ethnicity it is likely that further modeling can help more accurately identify patients at a greater risk for stroke.
+ 
 
  
