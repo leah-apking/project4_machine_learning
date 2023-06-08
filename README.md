@@ -58,9 +58,9 @@ We saved our healthcare-dataset-stroke-data.csv to Amazon AWS ` https://project4
 ### Preprocessing the Data
 Using Google Collab, we created notebook where we imported our dependencies, installed Spark and Java, set our environment variables and started a SparkSession. Next, we read in the healthcare-dataset-stroke-data.csv via AWS into a Spark DataFrame. During import Spark's `inferSchema` correctly cast all but one of our features. After converting from Spark to a Pandas DataFrame, we dropped the ID column and used `pd.to_numeric` to convert the BMI column to a float. Pandas allowed us to use `errors='coerce'` to force the “N/A” values to NaN, which had previously caused Spark to cast the column as objects. These rows containing NaN were then dropped from the dataset.
 
-Now that we had a useable dataset, we converted our categorical features to numeric with `pd.get_dummies`. Our encoded preprocessed data as split into our features and target arrays and split into a training and testing dataset. Here we also noted that our target variable was extremely unbalanced with 4700 no stroke patients and 209 stroke patients. Finally, we used `StandardScalar` to scale our feature variables before proceeding to the machine learning modelling.
+Now that we had a useable dataset, we converted our categorical features to numeric with `pd.get_dummies`. Our encoded preprocessed data as split into our features and target arrays and split into a training and testing dataset. Here we also noted that our target variable was extremely unbalanced with 4700 no stroke patients and 209 stroke patients. Finally, we used `StandardScalar` to scale our feature variables before proceeding to the machine learning modeling.
 
-### Initial Machine Learning Modelling
+### Initial Machine Learning Modeling
 Our initial round of testing used our unbalanced scaled data for training, and the imbalance caused all of these models to perform poorly. The testing data contained only `4.26%` positive targets, which allowed the models to classify every data point as ‘no stroke’ and still receive a 95 percent accuracy score. Therefore, we focused on the models’ ability to classify stroke patients, but found our small number of positive cases insufficient to train an accurate model. 
 * Logistic Regression: Identified 0 stoke patients.
 * Neural Network: Identified 0 stoke patients.
@@ -83,7 +83,7 @@ Our final model for identifying stroke patients in our dataset which contained f
 
 This resampled, scaled training data was then used to train a logistic regression model. The model was then used to predict the outcomes of our testing dataset which contained 54 stroke patients and 1174 non stroke patients. The model successfully identified 43 stroke patients, `79.6%`, with a balanced accuracy score of `0.783`. The model was saved to `stroke_model_LR.h5` using joblib.
 
-### Discussion
-Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. We have come to understand that not all health conditions can be clearly connected to certain features. While type 2 diabetes or heart disease have very clear warning signs and testing, the risk factors for stroke can be harder to parse and more variable. However, given a larger more targeted dataset, such as older adults, with additional features such as family history, LDL cholesterol levels, presence of diabetes, or race and ethnicity it is likely that modelling can help identify patients at a greater risk for stroke.
+### Summary
+Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. While type 2 diabetes or heart disease have very clear warning signs, the risk factors for stroke can be harder to parse and more variable. 
 
  
