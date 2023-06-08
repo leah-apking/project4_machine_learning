@@ -22,7 +22,8 @@ To begin our project, we explored healthcare datasets, looking for data that inc
 
 Using a DataBricks notebook, Python, and Spark SQL we were able to review and analyze the stroke prediction data to learn more about the patients included in the data and how the clinical features may factor into our predictions. 
 
-![image](Images/Databricks_notebook.png)
+![image](Images/databricks_notebook.png)
+
 
 Using a DataBricks notebook, we were able to easily develop visualization from our table and analysis to create dashboard for sharing and updating our findings. 
 
@@ -52,4 +53,9 @@ Now that we have a better idea of what our data looks like, we can begin to buil
   
 Using Google Collab, we created notebook where we imported our dependencies, installed Spark and Java, set our environment variables and started a SparkSession. Next, we read in the healthcare-dataset-stroke-data.csv via AWS into a Spark DataFrame.
 
-
+![Google Colab Notebook](https://github.com/Erink8/Project4/blob/main/stroke_model.ipynb)
+  
+ ### Preprocessing the data
+ Printing the Spark Dataframe schema, we can determine data types prior to converting to a Pandas DataFrame and droping non-beneficial columns or NaN values and changing data types.
+ 
+ 
