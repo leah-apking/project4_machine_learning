@@ -20,7 +20,7 @@ To begin our project, we explored healthcare datasets, looking for data that inc
 
 ### Previewing Data
 
-Using a DataBricks notebook, Python, and Spark SQL we were able to review and analyze the stroke prediction data to learn more about the patients included in the data and how the clinical features may factor into our predictions. 
+Using a DataBricks notebook, Python, and Spark SQL we were able to review and analyze the stroke prediction data to learn more about the patients included in the dataset and how the clinical features may factor into our predictions. 
 
 ![image](Images/databricks_notebook.png)
 
