@@ -12,7 +12,7 @@ Nancy Gomez
 
 Sheila Troxel
 
-# Our Project - Predictive Risks of Stroke
+# Our Project - Predicting Stroke
 
 ### Exploring Datasets
 
