@@ -86,5 +86,8 @@ This resampled, scaled training data was then used to train a logistic regressio
 ### Summary
 Our focus when building this model was to identify stroke patients with the hope of being able to predict which patients are at a high risk of having a stroke in the future. We did our best to accommodate the lopsided dataset, which upon further investigation was not highly representative of the demographic most likely to suffer or have suffered a stroke. Given a larger more targeted dataset, such as older adults, with additional features such as family history, LDL cholesterol levels, presence of diabetes, or race and ethnicity it is likely that further modeling can help more accurately identify patients at a greater risk for stroke.
  
-
+### Presentation 
+The presentation of our findings can be found in Canva using the link below:
+ 
+https://www.canva.com/design/DAFkiGOItBE/zRdBrhNwD--8_1JE2aML6Q/view?utm_content=DAFkiGOItBE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
  
