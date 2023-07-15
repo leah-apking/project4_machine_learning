@@ -18,16 +18,18 @@ Sheila Troxel
 
 To begin our project, we explored healthcare datasets, looking for data that included other health factors in addition to whether a patient had a stroke or not, as this would be key in helping us build a model that could predict with high accuracy. We found a dataset that has been built for stroke prediction online at Kaggle.com that included 11 clinical features for predicting stroke events. These features included: Gender, Age, Hypertension, Heart Disease, Average Glucose, BMI, Smoking Status, Work Type, Residence Type, Ever Married , and Stroke Status.
 
-### Previewing Data
+### Investigating Risk Factors
 
-Using a DataBricks notebook, Python, and Spark SQL we were able to review and analyze the stroke prediction data to learn more about the patients included in the dataset and how the clinical features may factor into our predictions. 
+Using Tableau, we explored the risk factors for stroke provided by the CDC and compared them to those found in our dataset. We found that many of these risk factors we correlated with higher instances of patients experiencing stroke. However, we also found that our dataset contained less than 5 percent stroke patients, which made it more challenging to eventually train our model. We also found that while age, gender, heart disease, hypertension, glucose levels, BMI, and smoking status increase the risk of stroke it can be difficult to accurately predict.
 
-![image](Images/databricks_notebook.png)
+Check out the Tableau Story below for a full evaluation of risk factors provided in our dataset and used to create our machine learning model.
 
 
-Using a DataBricks notebook, we were able to easily develop visualization from our table and analysis to create dashboard for sharing and updating our findings. 
+<div class='tableauPlaceholder' id='viz1689452162585' style='position: relative'><noscript><a href='#'><img alt='Predicting Stroke: Risk Factors ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;7B&#47;7B4WT8ZBD&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;7B4WT8ZBD' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;7B&#47;7B4WT8ZBD&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>
 
-![image](Images/full_dashboard.png)
+
+https://public.tableau.com/shared/7B4WT8ZBD?:display_count=n&:origin=viz_share_link
+
 
 ### Summary of Stroke Data Findings
 In reviewing the `health-dataset-stroke-data.csv`, our data included patient data for 5110 individuals. Only 249 patients had experienced a stroke. With our data heavily weighted on non-stroke patients, we were curious if other factors in our dataset might affect our model. Here are our findings. 
@@ -90,12 +92,12 @@ Our focus when building this model was to identify stroke patients with the hope
 * AWS S3
 * Google Colab
 * Pandas
-* DataBricks
 * PySpark & Spark SQL
 * TensorFlow
 * Scikit-Learn
 * ImbalancedLearn
 * Keras-Tuner
+* Tableau
  
 ### Presentation 
 The presentation of our project can be found in Canva using the link below:
