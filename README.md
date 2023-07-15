@@ -1,6 +1,4 @@
-# Project 4: Machine Learning
-
-For this project our team was tasked to solve, analyze, or visualize a problem using machine learning (ML) with other technologies that we’ve learned throughout our course while following specific requirements.
+# Machine Learning: Predicting Stroke
 
 ### Our Team: 
 
@@ -11,8 +9,6 @@ Erin Clark
 Nancy Gomez
 
 Sheila Troxel
-
-# Our Project - Predicting Stroke
 
 ### Exploring Datasets
 
